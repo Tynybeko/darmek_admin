@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic);
+
+
+:root {
+    --primary-color: rgb(25, 162, 146);
+    --Gray-6: #F2F2F2;
+    --secondary: #ffe7d8;
+}
+
+
+
+* {
+    font-family: 'Ubuntu';
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+
+.sel-no {
+    user-select: none;
+    caret-color: transparent;
+}

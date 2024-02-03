@@ -1,0 +1,21 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    height: 100%;
+    z-index: 20;
+    background-color: rgba(251, 251, 251, 0.281);
+
+
+    &>div {
+        max-width: 60vw;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

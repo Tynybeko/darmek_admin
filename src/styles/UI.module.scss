@@ -1,0 +1,327 @@
+.input--field {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    border-radius: 32px;
+    box-shadow: inset 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(245, 245, 245);
+    color: var(--primary-color);
+    padding: 0 5px;
+    height: 30px;
+    align-items: center;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: var(--primary-color);
+        width: 100%;
+
+        border-radius: 32px;
+    }
+
+
+    button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--primary-color);
+    }
+
+    svg {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+    }
+
+
+
+
+}
+
+.btn-action {
+    border-radius: 40px;
+    padding: 3px 15px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: all .3s linear;
+    color: var(--primary-color);
+    border-radius: 32px;
+    border: none;
+    box-shadow: inset -10px -5px 16px 4px rgba(0, 0, 0, 0.16), inset 4px 10px 16px 4px rgb(255, 255, 255), 5px 5px 12px 1px rgba(0, 0, 0, 0.22);
+    background: rgb(245, 245, 245);
+
+    &:hover {
+        background: var(--primary-color);
+        color: var(--Gray-6, #F2F2F2);
+        box-shadow: inset -10px -5px 16px 4px rgba(0, 0, 0, 0.16), inset 4px 10px 16px 4px var(--primary-color), 5px 5px 12px 1px rgba(0, 0, 0, 0.22);
+    }
+
+
+    &:disabled {
+        cursor: default;
+        color: gray;
+        border: 1px solid gray;
+        background-color: transparent;
+    }
+}
+
+
+
+.loading--spin {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.head {
+    border: 1px solid var(--secondary);
+    padding: 5px 10px;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.834);
+    justify-content: space-between;
+
+    h1 {
+        font-size: 17px;
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        margin-left: 10px;
+        gap: 20px;
+    }
+
+    input[type="text"] {
+        border-radius: 12px;
+        border: 1px solid var(--Purple);
+        padding: 4px 6px;
+        caret-color: var(--Purple);
+        width: 300px;
+
+        &:focus {
+            outline: 1px solid var(--secondary);
+        }
+    }
+
+
+
+
+}
+
+
+.users-table {
+    background-color: rgba(255, 255, 255, 0.800);
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid var(--secondary);
+    font-weight: 400;
+    white-space: nowrap;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+
+    thead {
+        th {
+            text-align: left;
+            font-size: 15px;
+            padding: 10px 5px;
+            padding-top: 0;
+            border-bottom: 1px solid var(--secondary);
+        }
+    }
+
+    tbody {
+        font-weight: 500;
+
+        tr {
+            cursor: pointer;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transform-origin: right;
+                width: 100%;
+                background-color: var(--secondary);
+                height: 1px;
+                transform: scaleX(0);
+                transition: transform .7s linear;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+
+            }
+
+            &:hover>td {
+                color: rgba(0, 0, 255, 0.425);
+
+            }
+
+        }
+
+        td {
+            text-align: left;
+            font-size: 15px;
+            padding: 2px 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--Purple);
+            position: relative;
+        }
+
+        td[class="desc"] {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+
+
+            svg {
+                transition: all .1s ease-in-out;
+
+            }
+
+            &:hover svg {
+                stroke: var(--Purple);
+            }
+        }
+    }
+
+}
+
+
+
+
+.confirm_modal {
+    max-width: 40vw;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 10px;
+        justify-content: center;
+
+        svg {
+            width: 50px;
+            height: 50px;
+            stroke: #f26c19;
+
+        }
+
+        svg[type="succes"] {
+            stroke: rgb(2, 162, 2);
+
+        }
+
+        h1 {
+            font-weight: 500;
+        }
+
+    }
+
+    nav {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+
+
+        button {
+            padding: 5px 10px;
+            width: 100px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        button[class="ok"] {
+            background-color: rgba(255, 0, 0, 0.402);
+            color: white;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+
+}
+
+
+@keyframes succesSpin {
+    0% {
+        transform: translateX(100%);
+        opacity: .8;
+    }
+
+    50% {
+        transform: translateX(0);
+        opacity: 1;
+
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.succes-field {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: succesSpin 2.5s ease-in-out;
+
+    &>div {
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+
+        &>div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 {
+            font-size: 15px;
+        }
+
+        svg {
+            color: green
+        }
+    }
+}
