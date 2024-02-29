@@ -5,8 +5,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    height: 100%;
+    align-items: center;
+    height: 100vh;
     z-index: 20;
     background-color: rgba(251, 251, 251, 0.281);
 
@@ -17,5 +17,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 20px;
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .modal>div {
+        max-width: 90vw;
     }
 }

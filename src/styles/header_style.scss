@@ -1,10 +1,11 @@
 .header {
     width: 100%;
     padding: 8px 40px 8px 0px;
-    border-bottom: 1px solid var(--secondary);
+    border-bottom: 1px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--primary-color);
 
 
     &-logo {
@@ -15,10 +16,28 @@
         min-width: 200px;
 
         &_title {
-            color: var(--Purple);
+            color: white;
             font-size: 20px;
         }
+
+        a {
+            position: relative;
+
+
+            svg {
+                position: absolute;
+                width: 7.8px;
+                height: 7px;
+                top: 12.5px;
+                left: 57.2px;
+            }
+            text-decoration: none;
+        }
+        h1 {
+            color: white;
+        }
     }
+
 
     img {
         width: 50px;

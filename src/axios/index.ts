@@ -1,7 +1,7 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 let URL = import.meta.env.VITE_PUBLIC_MY_BASE_URL
-const instance = axios.create({
+const API = axios.create({
     baseURL: URL + '/api/v1',
 });
 
@@ -9,15 +9,28 @@ const instance = axios.create({
 
 
 
-instance.interceptors.request.use((request) => {
-    let user = JSON.parse(localStorage.getItem('user') ?? '{}');
-
+API.interceptors.request.use((request) => {
+    let token = localStorage.getItem('token')
     if (request.headers) {
-        // request.headers.Authorization = `Token ${user?.token}`   ;
+        if (token) {
+            request.headers.Authorization = `Token ${token}`;
+        }
     }
     return request;
 });
 
 
 
-export default instance;
+API.interceptors.response.use((response) => {
+    return Promise.resolve(response)
+}, (error) => {
+    if (error?.response && error.response.status == 401) {
+        localStorage.setItem('token', '')
+        window.location.href = '/auth'
+    }
+    return Promise.reject(error)
+});
+
+
+
+export default API;

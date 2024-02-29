@@ -1,0 +1,29 @@
+.head_pagination {
+    width: 100%;
+    padding: 10px 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    nav {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    &_item {
+        border: 1px solid var(--primary-color);
+        border-radius: 20px;
+        padding: 0 2px 0 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        p {
+            font-size: 17px;
+        }
+
+
+    }
+}

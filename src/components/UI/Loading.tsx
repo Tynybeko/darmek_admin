@@ -1,6 +1,6 @@
 import Modal from './Modal'
 import Style from '../../styles/UI.module.scss'
-import LoadingIcon from '/loading.gif'
+import LoadingIcon from '/loading.png'
 
 export default function Loading() {
     return (

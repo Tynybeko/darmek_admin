@@ -1,0 +1,100 @@
+.selector {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    transition: all .2s ease-in-out;
+    min-width: 120px;
+
+    &-action {
+        cursor: pointer;
+        width: 100%;
+        padding: 2px 10px;
+        position: relative;
+        border-radius: 13px;
+        border: 1px solid var(--primary-color);
+        display: flex;
+        color: var(--Purple);
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: inset -10px -5px 16px 4px rgba(255, 255, 255, 0.165), inset 4px 10px 16px 4px var(--primary-color), 5px 5px 12px 1px rgba(0, 0, 0, 0.22);
+
+        }
+    }
+
+    &-select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        z-index: 5;
+        background-color: white;
+        padding: 2px 2px 0 2px;
+        border-radius: 0 0 15px 15px;
+
+        ul {
+            width: 100%;
+
+            li {
+                padding: 2px 10px;
+                list-style: none;
+                cursor: pointer;
+                width: 100%;
+                border-radius: 14px;
+                border: 1px solid gray;
+                transition: all .2s ease-in-out;
+                margin-bottom: 3px;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: 5px;
+                text-overflow: ellipsis;
+
+                &:nth-last-child(-n + 1) {
+                    margin-bottom: 1px;
+                }
+
+                &:hover {
+                    border: 1px solid var(--primary-color);
+                    background-color: var(--primary-color);
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .actived {
+        display: block;
+
+    }
+
+}
+
+.selector.secondary-select {
+
+    .selector-action {
+
+        &:hover {
+            background: var(--primary-color);
+            color: #F2F2F2;
+        }
+    }
+
+    .selector-select {
+        background-color: transparent;
+
+        li {
+            margin-bottom: 1px;
+            background-color: rgb(255, 255, 255);
+
+            &:hover {
+                background-color: var(--primary-color);
+                color: white;
+            }
+        }
+    }
+}
