@@ -10,12 +10,45 @@
 
 
 * {
+
+
+
     font-family: 'Ubuntu';
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #f0f2f5 #ffffff;
+}
+
+/* Применяем стили для полосы прокрутки в Firefox */
+*:hover {
+    scrollbar-color: var(--primary-color) #ffffff;
+    /* Цвет полосы прокрутки при наведении курсора */
+}
+
+/* Применяем стили для полосы прокрутки веб-кита (Chrome, Safari, Edge) */
+*::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #f0f2f5;
+    /* Цвет полосы прокрутки */
+}
+
+*:hover::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+}
 
 body {
     height: 100vh;
@@ -28,8 +61,28 @@ body {
 }
 
 
+.main {
+    display: flex;
+
+}
+
 
 .sel-no {
     user-select: none;
     caret-color: transparent;
+}
+
+.rel {
+    position: relative;
+}
+
+
+.error-text {
+    color: red;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    white-space: nowrap;
+
 }

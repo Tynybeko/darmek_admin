@@ -10,6 +10,9 @@
     height: 30px;
     align-items: center;
 
+
+
+
     input {
         border: none;
         outline: none;
@@ -30,6 +33,30 @@
         color: var(--primary-color);
     }
 
+    button[title="search"] {
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            svg {
+                transition: all .3s ease-in-out;
+
+                path {
+                    stroke: var(--primary-color);
+                }
+
+                transform: scale(1.2);
+            }
+        }
+
+        svg {
+            transition: all .3s ease-in-out;
+
+            path {
+                stroke: gray;
+            }
+        }
+    }
+
     svg {
         cursor: pointer;
         width: 20px;
@@ -39,6 +66,57 @@
 
 
 
+}
+
+.text-area {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    border-radius: 32px;
+    box-shadow: inset 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(245, 245, 245);
+    color: var(--primary-color);
+    overflow: hidden;
+    padding: 0 5px;
+
+    textarea {
+        padding: 4px 2px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: var(--primary-color);
+        width: 100%;
+        border-radius: 32px;
+    }
+
+}
+
+
+.isActive {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+
+    &[title="active"] {
+        background-color: green;
+
+        p {
+            color: green;
+            margin-left: 15px;
+        }
+    }
+
+    &[title="noactived"] {
+        background-color: red;
+
+        p {
+            color: red;
+            margin-left: 15px;
+
+        }
+    }
 }
 
 .btn-action {
@@ -59,7 +137,7 @@
     &:hover {
         background: var(--primary-color);
         color: var(--Gray-6, #F2F2F2);
-        box-shadow: inset -10px -5px 16px 4px rgba(0, 0, 0, 0.16), inset 4px 10px 16px 4px var(--primary-color), 5px 5px 12px 1px rgba(0, 0, 0, 0.22);
+        box-shadow: inset -10px -5px 16px 4px rgba(255, 255, 255, 0.165), inset 4px 10px 16px 4px var(--primary-color), 5px 5px 12px 1px rgba(0, 0, 0, 0.22);
     }
 
 
@@ -68,7 +146,10 @@
         color: gray;
         border: 1px solid gray;
         background-color: transparent;
+        box-shadow: none;
+
     }
+
 }
 
 
@@ -77,6 +158,20 @@
     background-color: white;
     padding: 20px 30px;
     border-radius: 20px;
+
+    img {
+        animation: spin 1.5s infinite linear;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .head {
@@ -100,6 +195,11 @@
         margin-left: 10px;
         gap: 20px;
     }
+
+
+
+
+
 
     input[type="text"] {
         border-radius: 12px;
@@ -220,10 +320,11 @@
     width: 100%;
     padding: 20px;
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: white;
 
     div {
         display: flex;
@@ -324,4 +425,76 @@
             color: green
         }
     }
+}
+
+
+.table {
+    border: 1px solid var(--primary-color);
+    margin: 10px 0;
+    overflow: hidden;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 13px;
+    border-collapse: separate;
+    border-spacing: 0 0;
+
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+.thead {
+    position: relative;
+
+    th {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+}
+
+
+.tbody {
+
+    tr {}
+
+
+}
+
+.tfoot {
+    th {
+        padding: 3px 10px;
+    }
+}
+
+.tr {
+    cursor: pointer;
+    transition: all .2s linear;
+    text-transform: capitalize;
+    position: relative;
+    background-color: var(--primary-color);
+
+    th {
+        padding: 10px 0;
+
+        &::after {
+            content: '';
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background-color: white;
+        }
+    }
+
+    &:hover {
+        color: white;
+        transform: scale(1.01);
+        transition: all .2s linear;
+    }
+
 }

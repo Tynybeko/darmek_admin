@@ -1,24 +1,29 @@
-import { InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import React, {  InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
 import Styles from '../../styles/UI.module.scss'
+import { SetState } from '../../types';
+import Select from './Select';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     children?: ReactNode;
+    setValue?: SetState<string>
 }
-
-export default function Input({ children, ...attr }: InputProps) {
-    const [view, setView] = useState(false)
+interface TextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+    children?: ReactNode;
+    setValue?: SetState<string>
+}
+export default function Input({ children, setValue, ...attr }: InputProps) {
+    const [view, setView] = useState(true)
     const { type, ...someAttr } = attr
-    
     const [myType, setType] = useState(type)
-
     useEffect(() => {
-        if (myType == 'password') {
-            setType('text')
-        } else {
-            setType('password')
+        if (type == 'password') {
+            if (myType == 'password' && !view) {
+                setType('text')
+            } else if (view) {
+                setType('password')
+            }
         }
     }, [view])
-
 
     return (
         <label className={Styles["input--field"]}>
@@ -38,4 +43,39 @@ export default function Input({ children, ...attr }: InputProps) {
             {children}
         </label>
     );
+}
+
+export const TextArea: React.FC<TextAreaProps> = ({ children, ...attr }) => {
+    return (
+        <label className={Styles["text-area"]}>
+            <textarea   {...attr} />
+            {children}
+        </label>
+    )
+}
+
+
+interface SearchInput extends InputProps {
+    searchKeys: any[],
+    setValue: any
+}
+
+
+export const SearchInput: React.FC<SearchInput> = ({ children, setValue, searchKeys, ...attr }) => {
+    const [search, setSearch] = useState('')
+    const [myKey, setMyKey] = useState(searchKeys[0])
+    return (
+        <div className={Styles["input--field"]}>
+            <Select bg={true} defaultValue={searchKeys[0]} selectData={searchKeys} handleChange={setMyKey} />
+            <input onKeyDown={(e) => e.code === 'Enter' ? setValue([myKey.value, search]) : null} value={search} onChange={(e) => { e.target.value ? setSearch(e.target.value) : setValue([myKey.value, e.target.value]), setSearch(e.target.value) }}  {...attr} />
+            <button onClick={() =>
+                setValue ? setValue([myKey.value, search]) : null
+            } title='search'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40px" height="40px">
+                    <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
+                </svg>
+            </button>
+            {children}
+        </div>
+    )
 }

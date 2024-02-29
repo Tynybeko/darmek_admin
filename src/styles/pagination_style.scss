@@ -1,0 +1,73 @@
+.pagination-component {
+    width: 100%;
+
+    .block {
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        background-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1.5px solid var(--primary-color);
+        transition: all .15s ease-in-out;
+
+        svg {
+            transition: all .15s ease-in-out;
+            stroke: var(--primary-color);
+        }
+
+        &:hover {
+            background-color: var(--primary-color);
+
+            svg {
+                stroke: white;
+            }
+        }
+
+        &:disabled {
+            border: 1px solid gray;
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+                svg {
+                    stroke: var(--primary-color);
+                }
+            }
+        }
+    }
+
+    .prev {
+        transform: rotate(180deg);
+    }
+
+    .counter {
+        display: flex;
+        gap: 2px;
+
+        p {
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5px;
+            border-bottom: 1px solid var(--secondary);
+
+            &:hover {
+                border-bottom: 1px solid var(--Purple);
+            }
+        }
+
+        .actived {
+            color: var(--Purple);
+            border-bottom: 1px solid var(--Purple);
+        }
+    }
+
+}

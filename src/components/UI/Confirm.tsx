@@ -1,6 +1,7 @@
 import React, { SetStateAction } from 'react'
-import Modal from '../Modal'
+import Modal from './Modal'
 import Styles from "../../styles/UI.module.scss";
+import Button from './Button';
 
 
 
@@ -19,8 +20,8 @@ export default function Confirm({ text, callBack, setState }: ConfirmProps) {
                     <h1>{text ?? 'После совершение этой операции нельзя будет отменить!'}</h1>
                 </div>
                 <nav>
-                    <button onClick={() => callBack()} className='ok'>Ок</button>
-                    <button onClick={() => setState(null)} className='cancel'>Отмена</button>
+                    <Button onClick={() => callBack()} className='ok'>Ок</Button>
+                    <Button onClick={() => setState(null)} className='cancel'>Отмена</Button>
                 </nav>
             </section>
         </Modal>

@@ -1,34 +1,97 @@
 .navbar {
-    border-right: 1px solid var(--secondary);
+    border-right: 1px solid var(--primary-color);
     max-width: 200px;
     width: 100%;
     position: relative;
-    height: calc(100vh - 67px);
+    height: calc(100vh);
 
     &-cont {
         display: flex;
         flex-direction: column;
+        overflow: auto;
+        height: 100%;
 
-        a {
-            padding: 7px 10px;
-            color: black;
-            display: flex;
-            align-items: center;
-            transition: all .2s ease-in-out;
-            justify-content: space-between;
+        &-items {
 
-        }
+            h1 {
+                background-color: var(--primary-color);
+                color: white;
+                padding: 3px 10px;
+                font-size: 20px;
 
-        .active {
-            border-bottom: 1px solid var(--secondary);
-            color: var(--Purple);
-
-            svg {
-                transform: rotate(-90deg);
             }
 
-            padding-left: 15px;
+            a {
+                padding: 7px 10px;
+                color: black;
+                display: flex;
+                align-items: center;
+                transition: all .2s ease-in-out;
+                justify-content: space-between;
+
+            }
+
+            p {
+                padding: 7px 10px;
+                color: black;
+                display: flex;
+                align-items: center;
+                transition: all .2s ease-in-out;
+                justify-content: space-between;
+                font-size: 17px;
+                font-weight: 400;
+            }
+
+            .children {
+
+                ul {
+                    width: 100%;
+
+                    li {
+                        width: 100%;
+                        display: flex;
+                        list-style: none;
+
+                        a {
+                            width: 100%;
+                            padding-left: 20px;
+
+                        }
+
+                        .active {
+                            border-bottom: 1px solid var(--primary-color);
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+            }
+
+            .active {
+                border-bottom: 1px solid var(--primary-color);
+                color: var(--primary-color);
+            }
         }
 
+
+
+    }
+}
+
+
+@media (max-width: 800px) {
+    .navbar {
+        position: absolute;
+        z-index: 100;
+        background-color: white;
+        transform: translateX(-90%);
+        transition: transform .5s linear;
+
+        &:hover {
+            transform: translateX(0);
+        }
+    }
+
+    .table-page {
+        margin-left: 20px;
     }
 }

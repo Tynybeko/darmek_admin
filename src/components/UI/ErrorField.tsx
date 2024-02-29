@@ -1,6 +1,7 @@
 import React, { SetStateAction } from 'react'
-import Modal from '../Modal'
+import Modal from './Modal'
 import Styles from '../../styles/UI.module.scss'
+import Button from './Button'
 
 export default function ErrorField({ text, setError }: { text?: string, setError: React.Dispatch<SetStateAction<string>> }) {
     return (
@@ -11,9 +12,9 @@ export default function ErrorField({ text, setError }: { text?: string, setError
                     <h1>{text ?? 'Что то пошло не так!'}</h1>
                 </div>
                 <nav>
-                    <button onClick={() => setError('')} className='cancel'>
+                    <Button className='cancel' onClick={() => setError('')}>
                         Закрыть
-                    </button>
+                    </Button>
                 </nav>
             </section>
         </Modal>

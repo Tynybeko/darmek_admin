@@ -1,15 +1,34 @@
 import { NavLink } from 'react-router-dom'
-import '../../styles/navbar_style.scss'
+import '../styles/navbar_style.scss'
 
 
 const navData = [
-    { id: 1, href: '/', title: 'Пользователи' },
-    { id: 2, href: '/items', title: 'Предметы' },
-    // { id: 3, href: '/tarifs', title: 'Тарифы' },
-    { id: 4, href: '/regions', title: 'Регионы' },
-    { id: 5, href: '/cities', title: 'Города/Районы' },
-    { id: 6, href: '/schools', title: 'Школы' },
-    { id: 7, href: '/classes', title: 'Классы' },
+    { id: 6, href: '/sales', title: 'Скидки' },
+    {
+        id: 7, href: '/news', title: 'Новости', children: [
+            {
+                href: '/news/category',
+                title: 'Категория'
+            },
+        ]
+    },
+    { id: 9, href: '/notification', title: 'Уведомление' },
+
+]
+
+const c1Nav = [
+    {
+        id: 2, href: '/medicaments', title: 'Препараты', children: [
+            {
+                href: '/medicaments/category',
+                title: 'Категория'
+            },
+        ]
+    },
+    { id: 4, href: '/pharma', title: 'Аптеки' },
+    { id: 8, href: '/rates', title: 'Тарифы' },
+    
+    // { id: 5, href: '/buys', title: 'Покупки' },
 ]
 
 
@@ -18,11 +37,61 @@ export default function index() {
     return (
         <nav className='navbar'>
             <div className='navbar-cont sel-no'>
-                {
-                    navData.map(item => (
-                        <NavLink key={item.id} to={item.href}>{item.title}<svg className="feather sel-no feather-chevron-down" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9" /></svg></NavLink>
-                    ))
-                }
+                <div className='navbar-cont-items'>
+                    {
+                        navData.map(item => {
+                            if (!item.children?.length) {
+                                return (
+                                    <NavLink key={item.id} to={item.href}>{item.title}</NavLink>
+                                )
+                            } else {
+                                return (
+                                    <>
+                                        <NavLink key={item.id} to={item.href}>{item.title}</NavLink>
+                                        <div className="children">
+                                            <ul>
+                                                {
+                                                    item.children.map((el, index) => (
+                                                        <li key={index}><NavLink to={el.href}>{el.title}</NavLink></li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
+                                    </>
+
+                                )
+                            }
+                        })
+                    }
+                    <h1>1C</h1>
+                    <NavLink to={"/"}>Пользователи</NavLink>
+
+                    {
+                        c1Nav.map(item => {
+                            if (!item.children?.length) {
+                                return (
+                                    <NavLink key={item.id} to={item.href}>{item.title}</NavLink>
+                                )
+                            } else {
+                                return (
+                                    <>
+                                        <NavLink key={item.id} to={item.href}>{item.title}</NavLink>
+                                        <div className="children">
+                                            <ul>
+                                                {
+                                                    item.children.map((el, index) => (
+                                                        <li key={index}><NavLink to={el.href}>{el.title}</NavLink></li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
+                                    </>
+                                )
+                            }
+                        })
+                    }
+                </div>
+
             </div>
         </nav>
     )
