@@ -19,61 +19,72 @@
                 padding: 3px 10px;
                 font-size: 20px;
 
-            }
+                &-items {
 
-            a {
-                padding: 7px 10px;
-                color: black;
-                display: flex;
-                align-items: center;
-                transition: all .2s ease-in-out;
-                justify-content: space-between;
+                    h1 {
+                        background-color: var(--primary-color);
+                        color: white;
+                        padding: 3px 10px;
+                        font-size: 20px;
 
-            }
+                        >>>>>>>b48643491d27127b514dd54dd8393875e98e7076
+                    }
 
-            p {
-                padding: 7px 10px;
-                color: black;
-                display: flex;
-                align-items: center;
-                transition: all .2s ease-in-out;
-                justify-content: space-between;
-                font-size: 17px;
-                font-weight: 400;
-            }
-
-            .children {
-
-                ul {
-                    width: 100%;
-
-                    li {
-                        width: 100%;
+                    a {
+                        padding: 7px 10px;
+                        color: black;
                         display: flex;
-                        list-style: none;
+                        align-items: center;
+                        transition: all .2s ease-in-out;
+                        justify-content: space-between;
 
-                        a {
+                    }
+
+                    p {
+                        padding: 7px 10px;
+                        color: black;
+                        display: flex;
+                        align-items: center;
+                        transition: all .2s ease-in-out;
+                        justify-content: space-between;
+                        font-size: 17px;
+                        font-weight: 400;
+                    }
+
+                    .children {
+
+                        ul {
                             width: 100%;
-                            padding-left: 20px;
 
-                        }
+                            li {
+                                width: 100%;
+                                display: flex;
+                                list-style: none;
 
-                        .active {
-                            border-bottom: 1px solid var(--primary-color);
-                            color: var(--primary-color);
+                                a {
+                                    width: 100%;
+                                    padding-left: 20px;
+
+                                }
+
+                                .active {
+                                    border-bottom: 1px solid var(--primary-color);
+                                    color: var(--primary-color);
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            .active {
-                border-bottom: 1px solid var(--primary-color);
-                color: var(--primary-color);
+                    .active {
+                        border-bottom: 1px solid var(--primary-color);
+                        color: var(--primary-color);
+                    }
+                }
+
+
+
             }
         }
-
-
-
     }
 }
 
