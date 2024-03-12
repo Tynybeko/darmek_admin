@@ -77,16 +77,20 @@
     background: rgb(245, 245, 245);
     color: var(--primary-color);
     overflow: hidden;
-    padding: 0 5px;
 
     textarea {
-        padding: 4px 2px;
+        padding: 10px;
         border: none;
         outline: none;
         background-color: transparent;
         color: var(--primary-color);
         width: 100%;
         border-radius: 32px;
+
+
+        &:focus {
+            border: 1px solid var(--primary-color);
+        }
     }
 
 }

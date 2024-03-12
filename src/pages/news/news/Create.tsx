@@ -22,7 +22,7 @@ export default function Create({ setClose, categories }: IUpdateProps) {
     const [, setSucces] = useSucces()
     const [error, setError] = useState({
         category: '',
-        photos: ''
+        img: ''
     })
     const catSelectData = useMemo(() => {
         if (categories) {
@@ -35,6 +35,9 @@ export default function Create({ setClose, categories }: IUpdateProps) {
         e.preventDefault()
         setLoading(true)
         let formData = new FormData(e.target as HTMLFormElement)
+        if (!images) {
+            formData.delete('img')
+        }
         const response = API.post(`/news/`,
             formData
             , {
@@ -71,7 +74,7 @@ export default function Create({ setClose, categories }: IUpdateProps) {
             <form onSubmit={handleSubmit} className='single'>
                 <div>
                     <div className="head">
-                        <h2>Изменение новостя</h2>
+                        <h2>Добавление новостя</h2>
                         <nav>
                             <Button onClick={() => {
                                 let check: any = document.getElementById('category')
@@ -109,8 +112,9 @@ export default function Create({ setClose, categories }: IUpdateProps) {
 
                         <div className='body_content'>
                             <TextArea required title='Описание' placeholder='Описание' name='description' />
-                            <label className='image-adder img' htmlFor="image">
+                            <label className={`${error.img ? 'error-border' : ''} image-adder img`} htmlFor="image">
                                 <input name='img' id='image' style={{ display: 'none' }} onChange={(e) => {
+                                    setError(prev => ({...prev, img: ''}))
                                     if (e.target.files) {
                                         setImages(e.target.files[0] as any)
                                     }

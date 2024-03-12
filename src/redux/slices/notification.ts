@@ -8,7 +8,7 @@ import API from "../../axios";
 export const FetchAllNotification = createAsyncThunk('/notification/FetchAllNotification', async (payload: any) => {
     let query = new URLSearchParams(payload)
     for (let [key, item] of query.entries()) !item ? query.delete(key) : null;
-    const { data } = await API.get(`/notification/?${payload}`)
+    const { data } = await API.get(`/notification/?${query}`)
     return data
 })
 

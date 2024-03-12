@@ -33,6 +33,9 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
         e.preventDefault()
         setLoading(true)
         let formData = new FormData(e.target as HTMLFormElement)
+        if (!images) {
+            formData.delete('image')
+        }
         const response = API.put(`/notification/${element.id}/`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -61,7 +64,7 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
             <form onSubmit={handleSubmit} className='single'>
                 <div>
                     <div className="head">
-                        <h2>Создать уведомление</h2>
+                        <h2>Изменение уведомление</h2>
                         <nav>
                             <Button >Добавить</Button>
                             <CloseButton type='button' onClick={() => setClose(null)} />
@@ -75,7 +78,7 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
                     </div>
                     <div className=" body_content">
                         <TextArea value={update.content} onChange={handleChange} required name='content' placeholder='Контекст'></TextArea>
-                        <label className='image-adder img' htmlFor="image">
+                        <label className=' img' htmlFor="image">
                             <input name='image' id='image' style={{ display: 'none' }} onChange={(e) => {
                                 if (e.target.files) {
                                     setImages(e.target.files[0] as any)
