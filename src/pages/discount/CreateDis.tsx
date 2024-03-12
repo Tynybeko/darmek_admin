@@ -28,6 +28,7 @@ export default function CreateDis({ setClose, pharm }: ICreateDis) {
         start_date: '',
         end_date: '',
         pharmacy: '',
+        img: '',
     })
     const [state, setState] = useState({
         loading: false,
@@ -86,6 +87,7 @@ export default function CreateDis({ setClose, pharm }: ICreateDis) {
                 start_date: '',
                 end_date: '',
                 pharmacy: '',
+                img: ''
             })} onSubmit={(handleSubmit)} className='single'>
                 <div>
                     <div className="head">
@@ -99,7 +101,7 @@ export default function CreateDis({ setClose, pharm }: ICreateDis) {
                                     }
                                 }
                             }} type='submit'>Добавить</Button>
-                            <CloseButton onClick={() => setClose(false)}  type='button' />
+                            <CloseButton onClick={() => setClose(false)} type='button' />
                         </nav>
                     </div>
                     <div className="form body grid">
@@ -140,7 +142,7 @@ export default function CreateDis({ setClose, pharm }: ICreateDis) {
                         <TextArea placeholder='Описание' name='description'>
 
                         </TextArea>
-                        <label style={{ cursor: 'pointer' }} htmlFor='img'>
+                        <label className={`${error.img ? 'error-border' : ''}  img`} style={{ cursor: 'pointer' }} htmlFor='img'>
                             <input accept='image/*' id='img' onChange={(e) => e.target.files ? setImg(e.target.files) : null} style={{ display: 'none' }} type="file" />
                             {
                                 myImg ? <img src={URL.createObjectURL(myImg[0])} alt="IMG" /> : <NotImage />

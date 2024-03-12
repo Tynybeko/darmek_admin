@@ -58,12 +58,18 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
         setUpdatedElement(prev => ({ ...prev, [key]: value }))
     }
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        let sendedData: any = {}
+        const { img, ...someData } = updatedElement
         e.preventDefault()
         if (myImg) {
             updatedElement.img = myImg[0] as any
+            sendedData = { ...updatedElement }
+        } else {
+            sendedData = someData
         }
+         
         setState(prev => ({ ...prev, loading: true }))
-        const response = API.put(`/pharmacy/discounts/${updatedElement.id}/`, updatedElement, {
+        const response = API.put(`/pharmacy/discounts/${updatedElement.id}/`, sendedData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -110,7 +116,7 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
             })} onSubmit={(handleSubmit)} className='single'>
                 <div>
                     <div className="head">
-                        <h2>Создание скидки</h2>
+                        <h2>Изменение скидки</h2>
                         <nav>
                             <Button onClick={() => {
                                 let a: any = document.getElementById('pharmacy')
