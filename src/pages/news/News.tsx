@@ -88,7 +88,7 @@ export default function News() {
                     </Button>
                     <Input style={{ display: 'none' }}>
                         Категория
-                        <Select handleChange={setFilterCat} defaultValue={catSelectData[0]} selectData={catSelectData} />
+                        <Select bg handleChange={setFilterCat} defaultValue={catSelectData[0]} selectData={catSelectData} />
                     </Input>
                 </nav>
             </HeadPag>
@@ -120,7 +120,7 @@ export default function News() {
                 </TBody>
                 <TFoot>
                     <tr>
-                        <th><div><Pagination setPage={setPage} pageCount={Math.ceil((news.data?.count ?? 1) / 12)} page={page} /></div></th>
+                        <th colSpan={100}><div><Pagination setPage={setPage} pageCount={Math.ceil((news.data?.count ?? 1) / 12)} page={page} /></div></th>
                     </tr>
                 </TFoot>
             </Table>
