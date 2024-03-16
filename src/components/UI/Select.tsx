@@ -47,6 +47,7 @@ export default function Select({ children, selectData, attr, defaultValue, bg, h
         <div onClick={(e) => e.stopPropagation()} ref={modalRef} className={`selector sel-no ${bg ? 'secondary-select' : ''}`}>
             <div onClick={(e) => { e.stopPropagation(); setOpen(prev => !prev) }} className='selector-action'>
                 <p>{state.title}</p>
+                <svg className="feather feather-chevron-down" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9" /></svg>
                 {children}
                 <input value={state.value} {...attr} hidden type="text" />
             </div>

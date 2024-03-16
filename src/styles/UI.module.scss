@@ -14,12 +14,12 @@
 
 
     input {
+        padding: 0 7px;
         border: none;
         outline: none;
         background-color: transparent;
         color: var(--primary-color);
         width: 100%;
-
         border-radius: 32px;
     }
 
@@ -452,6 +452,8 @@
 
 .thead {
     position: relative;
+    background-color: var(--primary-color);
+    color: white;
 
     th {
         font-size: 15px;
@@ -471,15 +473,18 @@
 .tfoot {
     th {
         padding: 3px 10px;
+
     }
+
 }
 
 .tr {
+    color: rgb(30, 30, 30);
     cursor: pointer;
     transition: all .2s linear;
     text-transform: capitalize;
     position: relative;
-    background-color: var(--primary-color);
+    background-color: white;
 
     th {
         padding: 10px 0;
@@ -491,13 +496,14 @@
             bottom: 0;
             left: 0;
             height: 1px;
-            background-color: white;
+            background-color: black;
         }
     }
 
     &:hover {
-        color: white;
-        transform: scale(1.01);
+        // color: white;
+        background-color: var(--primary-color-opac);
+        // transform: scale(1.01);
         transition: all .2s linear;
     }
 

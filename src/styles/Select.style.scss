@@ -17,6 +17,7 @@
         display: flex;
         color: var(--Purple);
         transition: all .2s ease-in-out;
+        justify-content: space-between;
 
         &:hover {
             background-color: var(--primary-color);
