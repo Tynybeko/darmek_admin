@@ -5,13 +5,12 @@ import IsActive from '../../../components/UI/IsActive'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../redux/store'
 import NotImage from '../../../components/NotImage'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Confirm from '../../../components/UI/Confirm'
 import API from '../../../axios'
 import { useSucces } from '../../../hooks/useSucces'
 import ErrorField from '../../../components/UI/ErrorField'
 import Loading from '../../../components/UI/Loading'
-
 
 
 interface ISingleProps {
@@ -23,6 +22,7 @@ export default function Single({ element, setClose }: ISingleProps) {
     const medicalCat = useSelector((state: IRootState) => state.medicalCat)
     const [deleted, setDeleted] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [pharmacyGrugCount, setPharmacyDrugCount] = useState<any[] | null>(null)
     const [, setSucces] = useSucces()
     const [error, setError] = useState('')
     const handleDelete = () => {
@@ -37,6 +37,10 @@ export default function Single({ element, setClose }: ISingleProps) {
             })
             .finally(() => setLoading(false))
     }
+    useEffect(() => {
+        API.get(`/medications-count-at-pharmacy/?drug=${element.id}`)
+            .then(res => setPharmacyDrugCount(res.data.results))
+    }, [])
     return (
         <Modal handleClose={() => setClose(null)}>
             <div className='single'>
@@ -57,37 +61,35 @@ export default function Single({ element, setClose }: ISingleProps) {
                         </nav>
                     </div>
                     <div className='body form'>
-                        <div className='grid'>
-                            <div className='text-field'>
-                                <p>Название:</p>
-                                <h3>{element.name}</h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Описание:</p>
-                                <h3>{element.descrip}</h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Статус:</p>
-                                <h3>
-                                    <IsActive text={true} status={element.is_active} />
-                                </h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Категория:</p>
-                                <h3>{medicalCat.data?.results.find(el => el.id == element.category)?.title}</h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Цена:</p>
-                                <h3>{element.price}</h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Область применение:</p>
-                                <h3>{element.use_for}</h3>
-                            </div>
-                            <div className='text-field'>
-                                <p>Характеристики:</p>
-                                <h3>{element.сharacteristics}</h3>
-                            </div>
+                        <div className='text-field'>
+                            <p>Название:</p>
+                            <h3>{element.name}</h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Описание:</p>
+                            <h3>{element.descrip}</h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Статус:</p>
+                            <h3>
+                                <IsActive text={true} status={element.is_active} />
+                            </h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Категория:</p>
+                            <h3>{medicalCat.data?.results.find(el => el.id == element.category)?.title}</h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Цена:</p>
+                            <h3>{element.price}</h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Область применение:</p>
+                            <h3>{element.use_for}</h3>
+                        </div>
+                        <div className='text-field'>
+                            <p>Характеристики:</p>
+                            <h3>{element.сharacteristics}</h3>
                         </div>
 
                         <div className='body_content'>
@@ -104,7 +106,7 @@ export default function Single({ element, setClose }: ISingleProps) {
                                     </div>
                             }
                             <div className='body grid form'>
-                                {element.pharmacy_count.map(phar => (
+                                {pharmacyGrugCount ? pharmacyGrugCount.map(phar => (
                                     <div key={phar.id}>
                                         <h3>
                                             <span>
@@ -114,7 +116,7 @@ export default function Single({ element, setClose }: ISingleProps) {
                                         <p> <span>Количетсво:</span> {phar.count}</p>
                                         <p><span>Цена:</span> {phar.price}</p>
                                     </div>
-                                ))}
+                                )) : ''}
                             </div>
                         </div>
                     </div>
