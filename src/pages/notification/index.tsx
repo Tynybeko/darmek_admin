@@ -22,6 +22,7 @@ export default function index() {
             page_size: 9,
             page
         }
+
         dispatch(FetchAllNotification(query) as any)
     }, [page])
     return (
@@ -30,7 +31,7 @@ export default function index() {
                 create && <Create setClose={setCreate} />
             }
             {
-                changed && <Single element={changed} setClose={setChanged}/>
+                changed && <Single element={changed} setClose={setChanged} />
             }
             <div className="head_pagination">
                 <h3>Уведомление</h3>

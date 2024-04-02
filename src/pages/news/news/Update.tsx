@@ -40,7 +40,8 @@ export default function Update({ element, setClose, setData, categories }: IUpda
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoading(true)
-        let { img, ...someData } = update
+        let { img, photos, ...someData } = update
+        console.log(someData)
         const response = API.put(`/news/${update.id}/`, images ? { img: images, ...someData } : someData, { headers: { 'Content-Type': 'multipart/form-data' } })
         response
             .then(res => {

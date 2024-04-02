@@ -39,7 +39,8 @@ export default function Category() {
         let searchKey: string = search[0]
         const query = {
             page_size: 9,
-            [searchKey]: search[1]
+            page,
+            [searchKey]: search[1] ?? ''
         }
         dispatch(FetchAllNewsCat(query) as any)
     }, [page, search])
