@@ -36,6 +36,7 @@ export default function index() {
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         let formData = new FormData(e.target as HTMLFormElement)
+        for (let [key, item] of formData.entries()) !item ? formData.delete(key) : null
         let queryData = Object.fromEntries(formData.entries())
         setQuery(queryData)
     }
@@ -50,7 +51,7 @@ export default function index() {
         if (!pharmacy.data) {
             dispatch(FetchAllPharmacy({}) as any)
         }
-    }, [queryParams])
+    }, [queryParams, page])
     return (
         <section className='table-page'>
             {
@@ -71,6 +72,7 @@ export default function index() {
                         <Select attr={{ name: 'pharmacy' }} defaultValue={pharSelect[0]} selectData={pharSelect} />
                     </Input>
                     <Button disabled={discount.loading}>Поиск</Button>
+                    <Button type='reset' onClick={() => setQuery({})} disabled={discount.loading}>Очистить</Button>
                 </nav>
                 <Button onClick={() => setCreate(pr => !pr)} type='button'>Добавить</Button>
             </form>
