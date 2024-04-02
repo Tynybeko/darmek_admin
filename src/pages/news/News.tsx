@@ -120,7 +120,7 @@ export default function News() {
                 </TBody>
                 <TFoot>
                     <tr>
-                        <th colSpan={100}><div><Pagination setPage={setPage} pageCount={Math.ceil((news.data?.count ?? 1) / 12)} page={page} /></div></th>
+                        <th colSpan={100}><div><Pagination setPage={setPage} pageCount={Math.ceil((news.data?.count ?? 1) / 9)} page={page} /></div></th>
                     </tr>
                 </TFoot>
             </Table>

@@ -118,12 +118,12 @@ export default function Category() {
                         ))
                     }
                     {
-                        (newsCat.data && !newsCat.data.results.length) && <EmptyTR />   
+                        (newsCat.data && !newsCat.data.results.length) && <EmptyTR />
                     }
                 </TBody>
                 <TFoot>
                     <tr>
-                        <th><div><Pagination setPage={setPage} pageCount={Math.ceil((newsCat.data?.count ?? 1) / 12)} page={page} /></div></th>
+                        <th><div><Pagination setPage={setPage} pageCount={Math.ceil((newsCat.data?.count ?? 1) / 9)} page={page} /></div></th>
                     </tr>
                 </TFoot>
             </Table>

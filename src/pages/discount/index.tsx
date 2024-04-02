@@ -65,14 +65,18 @@ export default function index() {
             }
             <form onSubmit={handleSearch} className="head_pagination">
                 <nav>
-                    <Input name='start_date' type='date' >С</Input>
+                    {/* <Input name='start_date' type='date' >С</Input>
                     <Input name='end_date' type='date' >По</Input>
+                 
+                */}
+
                     <Input style={{ display: 'none' }}>
                         Aптека
                         <Select attr={{ name: 'pharmacy' }} defaultValue={pharSelect[0]} selectData={pharSelect} />
                     </Input>
                     <Button disabled={discount.loading}>Поиск</Button>
                     <Button type='reset' onClick={() => setQuery({})} disabled={discount.loading}>Очистить</Button>
+
                 </nav>
                 <Button onClick={() => setCreate(pr => !pr)} type='button'>Добавить</Button>
             </form>
@@ -105,7 +109,7 @@ export default function index() {
                 </TBody>
                 <TFoot>
                     <tr>
-                        <th><div><Pagination setPage={setPage} pageCount={Math.ceil((discount.data?.count ?? 1) / 12)} page={page} /></div></th>
+                        <th><div><Pagination setPage={setPage} pageCount={Math.ceil((discount.data?.count ?? 1) / 9)} page={page} /></div></th>
                     </tr>
                 </TFoot>
             </Table>
