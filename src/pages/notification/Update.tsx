@@ -66,7 +66,7 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
                     <div className="head">
                         <h2>Изменение уведомление</h2>
                         <nav>
-                            <Button >Добавить</Button>
+                            <Button >Сохранить</Button>
                             <CloseButton type='button' onClick={() => setClose(null)} />
                         </nav>
                     </div>
