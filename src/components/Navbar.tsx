@@ -5,10 +5,10 @@ import '../styles/navbar_style.scss'
 const navData = [
     { id: 6, href: '/sales', title: 'Скидки' },
     {
-        id: 7, href: '/news', title: 'Новости', children: [
+        id: 7, href: '/news/category', title: 'Категория новостей', children: [
             {
-                href: '/news/category',
-                title: 'Категория'
+                href: '/news',
+                title: 'Новости'
             },
         ]
     },
@@ -18,16 +18,16 @@ const navData = [
 
 const c1Nav = [
     {
-        id: 2, href: '/medicaments', title: 'Препараты', children: [
+        id: 2, href: '/medicaments/category', title: 'Категория препаратов', children: [
             {
-                href: '/medicaments/category',
-                title: 'Категория'
+                href: '/medicaments',
+                title: 'Препараты'
             },
         ]
     },
     { id: 4, href: '/pharma', title: 'Аптеки' },
     { id: 8, href: '/rates', title: 'Тарифы' },
-    
+
     // { id: 5, href: '/buys', title: 'Покупки' },
 ]
 

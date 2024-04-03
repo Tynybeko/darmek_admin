@@ -41,7 +41,6 @@ export default function Update({ element, setClose, setData, categories }: IUpda
         e.preventDefault()
         setLoading(true)
         let { img, photos, ...someData } = update
-        console.log(someData)
         const response = API.put(`/news/${update.id}/`, images ? { img: images, ...someData } : someData, { headers: { 'Content-Type': 'multipart/form-data' } })
         response
             .then(res => {
@@ -103,7 +102,7 @@ export default function Update({ element, setClose, setData, categories }: IUpda
                         <div>
                             <p><span>Категория</span></p>
                             <Input onClick={() => setError(prev => ({ ...prev, category: '' }))} style={{ display: 'none' }}>
-                                <Select attr={{ required: true, name: 'category', onChange: handleChange, id: 'category' }} defaultValue={catSelectData.find(el => el.id == update.category)} selectData={catSelectData} />
+                                <Select handleChange={(st:any) => setUpdate(prev => ({...prev, category: st.value}))} attr={{ required: true, name: 'category', onChange: handleChange, id: 'category' }} defaultValue={catSelectData.find(el => el.id == update.category)} selectData={catSelectData} />
                             </Input>
                             <p className='error-text'>{error.category}</p>
                         </div>

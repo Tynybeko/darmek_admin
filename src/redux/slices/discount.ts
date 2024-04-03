@@ -32,14 +32,14 @@ const DiscountSlice = createSlice({
         },
         setUpdate(state, { payload }) {
             if (state.data) {
-                let newData = state.data.results.map(el => el.id == payload.id ? { ...el, payload } : el)
+                let newData = state.data.results.map(el => el.id == payload.id ? { ...el, ...payload } : el)
                 state.data = { ...state.data, results: newData }
             }
         },
         setDelete(state, { payload }) {
             if (state.data) {
                 let newData = state.data.results.filter(el => el.id != payload.id)
-                state.data = {...state.data, results: newData}
+                state.data = { ...state.data, results: newData }
             }
         }
     },
