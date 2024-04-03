@@ -111,7 +111,7 @@ export default function CreateDis({ setClose, pharm }: ICreateDis) {
                                 e.preventDefault()
                                 setError(prev => ({ ...prev, pharmacy: '' }))
                             }} style={{ display: 'none' }}>
-                                <Select attr={{ required: true, name: 'pharmacy', id: 'pharmacy' }} selectData={pharm} />
+                                <Select   attr={{ required: true, name: 'pharmacy', id: 'pharmacy' }} selectData={pharm} />
                             </Input>
                             <p className='error-text'>{error.pharmacy ?? ''}</p>
                         </div>
