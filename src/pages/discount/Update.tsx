@@ -67,7 +67,7 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
         } else {
             sendedData = someData
         }
-         
+
         setState(prev => ({ ...prev, loading: true }))
         const response = API.put(`/pharmacy/discounts/${updatedElement.id}/`, sendedData, {
             headers: {
@@ -81,7 +81,6 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
                     dispatch(DiscountActions.setUpdate(res.data))
                     setData(res.data)
                     setClose(null)
-
                 }
             })
             .catch((err) => {
@@ -98,7 +97,6 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
                 setState(prev => ({ ...prev, loading: false }))
             })
     }
-
     return (
         <Modal handleClose={() => setClose(null)}>
             {
@@ -136,14 +134,14 @@ export default function Update({ setClose, pharm, element, setData }: ICreateDis
                                 e.preventDefault()
                                 setError(prev => ({ ...prev, pharmacy: '' }))
                             }} style={{ display: 'none' }}>
-                                <Select defaultValue={pharm.find((el: any) => el.value == updatedElement.pharmacy)} attr={{ required: true, name: 'pharmacy', id: 'pharmacy' }} selectData={pharm} />
+                                <Select handleChange={((st: any) => setUpdatedElement(prev => ({ ...prev, pharmacy: st.id })))} defaultValue={pharm.find((el: any) => el.value == updatedElement.pharmacy)} attr={{ required: true, name: 'pharmacy', id: 'pharmacy' }} selectData={pharm} />
                             </Input>
                             <p className='error-text'>{error.pharmacy ?? ''}</p>
                         </div>
                         <div>
                             <p>Статус</p>
                             <Input style={{ display: 'none' }}>
-                                <Select attr={{ name: 'is_active', onChange: handleChange }} defaultValue={{ id: 0, value: updatedElement.is_active, title: updatedElement.is_active ? 'Активный' : 'Не активный' }} selectData={selectData}></Select>
+                                <Select handleChange={((st: any) => setUpdatedElement(prev => ({ ...prev, is_active: st.value })))} attr={{ name: 'is_active', onChange: handleChange }} defaultValue={{ id: 0, value: updatedElement.is_active, title: updatedElement.is_active ? 'Активный' : 'Не активный' }} selectData={selectData}></Select>
                             </Input>
                         </div>
                         <div>

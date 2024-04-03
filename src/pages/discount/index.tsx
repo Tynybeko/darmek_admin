@@ -52,6 +52,7 @@ export default function index() {
             dispatch(FetchAllPharmacy({}) as any)
         }
     }, [queryParams, page])
+    
     return (
         <section className='table-page'>
             {
