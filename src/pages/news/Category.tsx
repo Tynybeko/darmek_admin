@@ -91,7 +91,7 @@ export default function Category() {
                     <tr>
                         <th>Название</th>
                         <th>ID</th>
-                        <th>Количетсво новостей</th>
+                        <th>Количество новостей</th>
                         <th>
 
                         </th>

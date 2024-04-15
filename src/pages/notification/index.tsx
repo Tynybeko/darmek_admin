@@ -34,7 +34,7 @@ export default function index() {
                 changed && <Single element={changed} setClose={setChanged} />
             }
             <div className="head_pagination">
-                <h3>Уведомление</h3>
+                <h3>Уведомления</h3>
                 <nav>
                     <Button onClick={() => setCreate(true)}>
                         Добавить
