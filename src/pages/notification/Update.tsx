@@ -9,7 +9,7 @@ import { NotifActions } from '../../redux/slices/notification'
 import { useSucces } from '../../hooks/useSucces'
 import ErrorField from '../../components/UI/ErrorField'
 import Loading from '../../components/UI/Loading'
-import NotImage from '../../components/NotImage'
+
 
 interface ICreateProps {
     setClose: SetState<INotification | null>,

@@ -19,7 +19,6 @@ export default function Create({ setClose }: ICreateProps) {
     const [loading, setLoading] = useState(false)
     const [, setSucces] = useSucces()
     const [error, setError] = useState('')
-    const [images, setImages] = useState<any>()
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoading(true)
