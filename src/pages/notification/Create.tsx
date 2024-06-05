@@ -65,16 +65,7 @@ export default function Create({ setClose }: ICreateProps) {
                     </div>
                     <div className=" body_content">
                         <TextArea required name='content' placeholder='Контекст'></TextArea>
-                        <label className='image-adder img' htmlFor="image">
-                            <input name='image' id='image' style={{ display: 'none' }} onChange={(e) => {
-                                if (e.target.files) {
-                                    setImages(e.target.files[0] as any)
-                                }
-                            }} accept='image/*' type="file" />
-                            {
-                                images ? <img src={URL.createObjectURL(images)} alt="New News Img" /> : '+'
-                            }
-                        </label>
+                       
                     </div>
                 </div>
             </form>

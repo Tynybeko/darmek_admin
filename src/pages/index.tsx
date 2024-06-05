@@ -8,7 +8,6 @@ export default function index() {
     if (!token) {
         return <Navigate to={'/auth'} />
     }
-
     return (
         <SuccesProvider>
             <Header />

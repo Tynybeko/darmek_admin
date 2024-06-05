@@ -23,7 +23,6 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
     const [loading, setLoading] = useState(false)
     const [, setSucces] = useSucces()
     const [error, setError] = useState('')
-    const [images, setImages] = useState<any>()
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         let key = e.target.name
         let value = e.target.value
@@ -33,9 +32,6 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
         e.preventDefault()
         setLoading(true)
         let formData = new FormData(e.target as HTMLFormElement)
-        if (!images) {
-            formData.delete('image')
-        }
         const response = API.put(`/notification/${element.id}/`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -76,18 +72,8 @@ export default function Update({ setClose, element, setData }: ICreateProps) {
                             <Input value={update.name} onChange={handleChange} name='name' required placeholder='Название' />
                         </div>
                     </div>
-                    <div className=" body_content">
-                        <TextArea value={update.content} onChange={handleChange} required name='content' placeholder='Контекст'></TextArea>
-                        <label className=' img' htmlFor="image">
-                            <input name='image' id='image' style={{ display: 'none' }} onChange={(e) => {
-                                if (e.target.files) {
-                                    setImages(e.target.files[0] as any)
-                                }
-                            }} accept='image/*' type="file" />
-                            {
-                                images ? <img src={URL.createObjectURL(images)} alt="New News Img" /> : update.image ? <img src={update.image} alt='Image' /> : <NotImage />
-                            }
-                        </label>
+                    <div className="body_content_single">
+                        <TextArea  value={update.content} onChange={handleChange} required name='content' placeholder='Контекст'></TextArea>
                     </div>
                 </div>
             </form>

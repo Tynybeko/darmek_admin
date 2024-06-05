@@ -75,14 +75,11 @@ export default function
                             <p><span>Название</span></p>
                             <h3>{myData.name}</h3>
                         </div>
-                        <div className='body_content'>
+                        <div className='body_content_single'>
                             <div className='form'>
                                 <p><span>Контекст</span></p>
                                 <h3>{myData.content}</h3>
                             </div>
-                            {
-                                myData.image ? <img src={myData.image} alt='Image' /> : <NotImage />
-                            }
                         </div>
                     </div>
 

@@ -116,6 +116,17 @@
             }
         }
 
+        &_content_single {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            max-height: 300px;
+            min-height: 200px;
+            flex-wrap: wrap;
+
+
+        }
+
     }
 
 
